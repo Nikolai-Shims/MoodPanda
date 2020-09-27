@@ -10,15 +10,36 @@
 
     <properties>
         <selenide>5.14.2</selenide>
+        <testng>7.0.0</testng>
     </properties>
 
+
+
+
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/com.codeborne/selenide -->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>${selenide}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
