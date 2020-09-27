@@ -10,9 +10,12 @@ public class LoginPage {
     private static final String URL = "https://moodpanda.com/Login/";
     private static final String USERNAME = "nikmoodpanda@mailinator.com";
     private static final String PASSWORDD = "1234qwer";
-    private static final String BUTTON_LOGIN = "ctl00$ContentPlaceHolderContent$ButtonLogin";
-    private static final String FIELD_PASSWORD = "ctl00$ContentPlaceHolderContent$TextBoxPassword";
-    private static final String FIELD_LOGIN = "ctl00$ContentPlaceHolderContent$TextBoxEmail";
+//    private static final String BUTTON_LOGIN = "ctl00$ContentPlaceHolderContent$ButtonLogin";
+//    private static final String FIELD_PASSWORD = "ctl00$ContentPlaceHolderContent$TextBoxPassword";
+//    private static final String FIELD_LOGIN = "ctl00$ContentPlaceHolderContent$TextBoxEmail";
+public static final String FIELD_LOGIN = "//*[contains(text(),'email')]/..//div[@class = \"col-lg-12\"]//input";
+    public static final String FIELD_PASSWORD = "//*[contains(text(),'Password')]/..//div[@class = \"col-lg-12\"]//input";
+    public static final String BUTTON_LOGIN = "[value='Login']";
 
     @Step("Open Login Page")
     public LoginPage openloginPage(){
