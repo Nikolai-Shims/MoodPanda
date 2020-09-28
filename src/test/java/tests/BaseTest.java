@@ -1,6 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.MainPage;
@@ -12,7 +14,7 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void before(){
+    public void before(ITestResult result){
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
         Configuration.clickViaJs = true;

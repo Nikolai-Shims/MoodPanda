@@ -3,8 +3,10 @@ package tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Link;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(TestListener.class)
 public class LoginTest extends BaseTest{
 
     @Test(description = "Login to Mood Panda")
