@@ -1,11 +1,17 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.SessionNotCreatedException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.MainPage;
+
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
 
@@ -14,7 +20,7 @@ public class BaseTest {
 
 
     @BeforeMethod
-    public void before(ITestResult result){
+    public void before(ITestContext context){
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
         Configuration.clickViaJs = true;
