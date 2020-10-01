@@ -6,16 +6,11 @@ pipeline {
         maven "M3"
     }
 
-    parameters {
-        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
-    }
-
     stages {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-
-                git branch: "${params.BRANCH}", url: 'https://github.com/Nikolai-Shims/MoodPanda.git'
+                git 'https://github.com/Nikolai-Shims/MoodPanda.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn clean test"
@@ -29,10 +24,12 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
                 }
             }
         }
-         stage('Reporting') {
+    }
+    stage('Reporting') {
          steps {
              script {
                      allure([
@@ -45,5 +42,4 @@ pipeline {
              }
          }
         }
-    }
 }
