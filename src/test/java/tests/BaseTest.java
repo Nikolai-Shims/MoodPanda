@@ -1,31 +1,50 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import org.openqa.selenium.SessionNotCreatedException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.ITestContext;
-import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Listeners;
+import pages.HeaderPage;
 import pages.MainPage;
+import org.testng.annotations.BeforeMethod;
+import pages.modals.RateHappiness;
+import steps.*;
+import tests.another.TestListener;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
-    LoginPage loginPage;
+    public static final String USERNAME = "nikmoodpanda@mailinator.com";
+    public static final String PASSWORD = "1234qwer";
+
     MainPage mainPage;
+    HomePageSteps homePageSteps;
+    MyUpdatePageSteps myUpdatePageSteps;
+    UpdateMoodSteps updateMoodSteps;
+    LoginSteps loginSteps;
+    LogoutSteps logoutSteps;
 
 
     @BeforeMethod
-    public void before(ITestContext context){
+    public void before() {
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
-        Configuration.clickViaJs = true;
+        //Configuration.clickViaJs = true;
         Configuration.startMaximized = true;
-        loginPage = new LoginPage();
+
+        homePageSteps = new HomePageSteps();
+        updateMoodSteps = new UpdateMoodSteps();
+        logoutSteps = new LogoutSteps();
+        myUpdatePageSteps = new MyUpdatePageSteps();
+        loginSteps = new LoginSteps();
+
         mainPage = new MainPage();
+
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void close() {
+        getWebDriver().quit();
     }
 }
