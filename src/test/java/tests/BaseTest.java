@@ -3,10 +3,8 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
-import pages.HeaderPage;
 import pages.MainPage;
 import org.testng.annotations.BeforeMethod;
-import pages.modals.RateHappiness;
 import steps.*;
 import tests.another.TestListener;
 
